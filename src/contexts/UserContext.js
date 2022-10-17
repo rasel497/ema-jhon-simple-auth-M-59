@@ -1,10 +1,15 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
+import { getAuth } from 'firebase/auth'
+import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 
-const UserContext = ({ children }) => {
+const auth = getAuth(app);
 
-    const authInfo = {}
+const UserContext = ({ children }) => {
+    const [user, setUser] = useState(null);
+
+    const authInfo = { user }
 
     return (
         <div>
@@ -15,4 +20,4 @@ const UserContext = ({ children }) => {
     );
 };
 
-export default UserContext;
+export default UserContext; 

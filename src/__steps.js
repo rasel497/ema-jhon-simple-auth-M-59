@@ -15,5 +15,7 @@ userContext provides AuthContext
 2. Create AuthContext. [export const AuthContext = createContext();]
 3. set AuthContext.Provider
 4. Make sure set the children
-
+5. export AuthContext to be used inside useContext hook
+6. get from data
+7. getAuth in the UserContext
 */
