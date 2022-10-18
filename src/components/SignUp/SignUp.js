@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
 import './SignUp.css';
 
 
 const SignUp = () => {
     const [error, setError] = useState(null);
+    const { createUser } = useContext(AuthContext)
 
     const handleOnSubmit = (event) => {
-        event.preventDefault(); // for no reload 735
+        event.preventDefault(); // for no reload
 
         const form = event.target;
         const name = form.name.value;
@@ -24,6 +26,15 @@ const SignUp = () => {
             setError('Your password did not match');
             return;
         }
+
+        // create user ke eikhne pathai dibo
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => console.error(error));
 
     }
 
@@ -46,9 +57,10 @@ const SignUp = () => {
                     <label htmlFor="password">Password</label>
                     <input type="password" name='password' placeholder='your password' required />
                 </div>
+
                 <div className="form-control">
                     <label htmlFor="confirm">Confirm Password</label>
-                    <input type="password" name='confirm' placeholder='your password' required />
+                    <input type="password" name='confirm' placeholder='re-type password' required />
                 </div>
 
                 <input className='btn-submit' type="submit" value="SIGN UP" id="" />
