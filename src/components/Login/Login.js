@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate(); //1.2 use when we login tokhn amdrke root/home page niye jbe
 
     const handleOnSubmit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
 
         const form = event.target;
         const email = form.email.value;
