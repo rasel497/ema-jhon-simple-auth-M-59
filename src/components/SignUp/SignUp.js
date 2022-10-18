@@ -12,7 +12,7 @@ const SignUp = () => {
         event.preventDefault(); // for no reload
 
         const form = event.target;
-        const name = form.name.value;
+        // const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
@@ -43,10 +43,10 @@ const SignUp = () => {
         <div className='form-container'>
             <h2 className='form-title'>Register</h2>
             <form onSubmit={handleOnSubmit}>
-                <div className="form-control">
+                {/* <div className="form-control">
                     <label htmlFor="name">Name</label>
                     <input type="text" name='name' placeholder='your name' />
-                </div>
+                </div> */}
 
                 <div className="form-control">
                     <label htmlFor="email">Email</label>
